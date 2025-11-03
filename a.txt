@@ -1,0 +1,66 @@
+sample_t2i_hed_noprompt.png
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/hed/hed.safetensors --gpt-model GPT-XL --image-size 512 --condition-type hed --seed 0 --condition-path condition/example/t2i/multigen/eye.png
+a high-quality image
+
+sample_t2i_hed_prompt1.png
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/hed/hed.safetensors --gpt-model GPT-XL --image-size 512 --condition-type hed --seed 0 --condition-path condition/example/t2i/multigen/eye.png --prompt 'A pair of deep amber eyes, with glimmering gold dust scattered around the pupils'
+A pair of deep amber eyes, with glimmering gold dust scattered around the pupils.
+一双深邃的琥珀色眼眸，瞳孔边缘泛着细碎金光。
+
+sample_t2i_hed_prompt2.png
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/hed/hed.safetensors --gpt-model GPT-XL --image-size 512 --condition-type hed --seed 0 --condition-path condition/example/t2i/multigen/eye.png --prompt 'Ice-blue irises veiled in a hazy mist, with frost crystals clinging to the eyelashes.'
+Ice-blue irises veiled in a hazy mist, with frost crystals clinging to the eyelashes.
+冰蓝色眼瞳带着朦胧雾气，睫毛凝结着霜晶。
+
+sample_t2i_hed_prompt3.png
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/hed/hed.safetensors --gpt-model GPT-XL --image-size 512 --condition-type hed --seed 0 --condition-path condition/example/t2i/multigen/eye.png --prompt 'Emerald green eyes shimmering with a liquid metallic luster.'
+Emerald green eyes shimmering with a liquid metallic luster.
+翡翠绿眼眸中流转着液态金属般的光泽。
+
+* ---------------------------------- ****** ---------------------------------- *
+sample_t2i_seg_noprompt.png
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/seg/seg_cocostuff.safetensors --gpt-model GPT-XL --image-size 512 --condition-type seg --seed 0 --condition-path condition/example/t2i/cocostuff/doll.png
+a high-quality image
+
+sample_t2i_seg_prompt0.png
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/seg/seg_cocostuff.safetensors --gpt-model GPT-XL --image-size 512 --condition-type seg --seed 0 --condition-path condition/example/t2i/cocostuff/doll.png --prompt 'A stuffed animal wearing a mask and a leash, sitting on a pink blanket'
+A stuffed animal wearing a mask and a leash, sitting on a pink blanket
+
+
+sample_t2i_seg_prompt1.png
+带着精致裂纹和手绘雀斑的陶瓷娃娃
+A porcelain doll with delicate cracks and hand-painted freckles.
+
+sample_t2i_seg_prompt2.png
+有着刺绣眼睑和褪色纱线头发的复古布娃娃
+A vintage cloth doll with embroidered eyelids and faded yarn hair.
+
+
+sample_t2i_seg_prompt3.png
+A ball-jointed doll with glass eyes and pearlescent skin.
+玻璃眼珠与珍珠光泽肌肤的球关节人偶
+
+sample_t2i_seg_prompt4.png
+A Golden Retriever with warm, sun-lit fluffy fur and friendly dark eyes.
+一只金毛犬有着温暖如阳光的蓬松毛发和友善的深色眼睛。
+
+sample_t2i_seg_prompt5.png
+A teddy bear with worn-out plush fur and two jet-black glass bead eyes.
+一只泰迪熊有着磨损的绒毛和两颗乌黑的玻璃珠眼睛。
+
+sample_t2i_seg_prompt6.png
+A vintage fabric bear with curious eyes meticulously crafted from sewn buttons.
+复古的布制小熊，用纽扣缝制出了充满好奇的眼神。
+
+
+sample_t2i_seg_prompt7.png
+A plush bear featuring a simple, good-natured smile and an embroidered nose.
+一只毛绒小熊，带着憨厚的微笑和绣线鼻子。
+
+sample_t2i_seg_prompt8.png
+A golden retriever plush with fluffy fur, a wholesome smile, and black button eyes.
+一只绒毛蓬松的金毛犬玩偶，有着憨厚的笑容和纽扣缝制的黑眼睛。
+
+sample_t2i_seg_prompt9.png
+A classic teddy bear plush with beige velvet body and movable black glass eyes.
+一只经典的泰迪熊玩偶，拥有米色绒布身躯和会眨动的黑色玻璃眼珠。
