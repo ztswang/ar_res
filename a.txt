@@ -64,3 +64,43 @@ A golden retriever plush with fluffy fur, a wholesome smile, and black button ey
 sample_t2i_seg_prompt9.png
 A classic teddy bear plush with beige velvet body and movable black glass eyes.
 一只经典的泰迪熊玩偶，拥有米色绒布身躯和会眨动的黑色玻璃眼珠。
+
+# canny
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/canny/canny_MR.safetensors --gpt-model GPT-XL --image-size 768 --condition-type canny --seed 0 --condition-path condition/example/t2i/multigen/landscape.jpg
+云雾缭绕的青山与如镜的碧湖相映
+Misty emerald peaks reflected in a mirror-like turquoise lake.
+月光下的竹林与潺潺溪流泛着银辉
+Bamboo forest under moonlight with a silvery shimmering stream.
+瀑布从长满青苔的悬崖坠入翡翠深潭
+Waterfall cascading from moss-covered cliffs into a jade-green pool.
+
+# depth
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/depth/depth_MR.safetensors --gpt-model GPT-XL --image-size 768 --condition-type depth --seed 0 --condition-path condition/example/t2i/multigen/sofa.png
+弧形奶白色模块沙发环绕着大理石茶几。
+Curved modular sofa in cream white surrounding a marble coffee table.
+深蓝色天鹅绒转角沙发配毛绒地毯与壁炉。
+Navy blue velvet corner sofa with plush rug and fireplace.
+藤编单人沙发与亚麻长沙发的自然风混搭。
+Natural-style mix of rattan armchairs and linen sectional sofa.
+
+# Lineart
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/edge_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type lineart --seed 0 --condition-path condition/example/t2i/multigen/girl.jpg --adapter-size base
+
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/edge_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type lineart --seed 0 --condition-path condition/example/t2i/multigen/girl.jpg --prompt 'Light golden natural curls with tiny freckles scattered across the cheeks.' --adapter-size base
+Light golden natural curls with tiny freckles scattered across the cheeks
+金色自然卷发，脸颊点缀着细小雀斑
+
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/edge_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type lineart --seed 0 --condition-path condition/example/t2i/multigen/girl.jpg --prompt 'Dark brown bob with upturned ends and a light brown mole on the bridge of the nose.' --adapter-size base
+Dark brown bob with upturned ends and a light brown mole on the bridge of the nose
+深棕色波波头发尾微翘，鼻梁有颗浅褐色小痣
+
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/edge_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type lineart --seed 0 --condition-path condition/example/t2i/multigen/girl.jpg --prompt 'Jet-black straight hair with blunt bangs and glitter accents at the outer eye corners.' --adapter-size base
+Jet-black straight hair with blunt bangs and glitter accents at the outer eye corners
+乌黑齐刘海长发，眼尾点缀着亮片妆
+
+
+
+
+
+
+
