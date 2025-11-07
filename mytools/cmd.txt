@@ -1,0 +1,47 @@
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/depth_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type seg --seed 0 --condition-path condition/example/t2i/multigen/bird.jpg --prompt 'A bird made of blue crystal' --adapter-size base --control-strength 0.6
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/depth_base.safetensors --gpt-model GPT-XL --image-size 768 --condition-type seg --seed 0 --condition-path condition/example/t2i/multigen/bird.jpg --prompt 'A bird made of blue crystal' --adapter-size base --control-strength 0.6
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/canny_MR.safetensors --gpt-model GPT-XL --image-size 512 --condition-type seg --seed 0 --condition-path condition/example/t2i/multigen/bird.jpg --prompt 'A bird made of blue crystal' --adapter-size small --control-strength 0.6
+
+
+
+C2I
+
+/data/hww/hww-huawei/ControlAR/autoregressive/models/vit_adapter.py的autoregressive/models/vit-small我更换成autoregressive/models/dinov2-small这个了，尚不清楚这个的问题。
+
+# 原始命令如下，但是没有公开C2I的权重文件，我修改了ControlAR/autoregressive/models/generate.py line87行，然后加载LlamaGen的c2i_L_384.pt进行测试，可以允许但是不可以可控生成
+python autoregressive/sample/sample_c2i.py --vq-ckpt checkpoints/vq/vq_ds16_c2i.pt --gpt-ckpt checkpoints/c2i/canny/LlamaGen-L.pt --gpt-model GPT-L --seed 0 --condition-type canny
+# 加载LlamaGen的权重进行测试
+python autoregressive/sample/sample_c2i.py --vq-ckpt checkpoints/vq/vq_ds16_c2i.pt --gpt-ckpt checkpoints/c2i/c2i_L_256.pt --gpt-model GPT-L --seed 0 --condition-type canny
+python autoregressive/sample/sample_c2i.py --vq-ckpt checkpoints/vq/vq_ds16_c2i.pt --gpt-ckpt checkpoints/c2i/c2i_L_384.pt --gpt-model GPT-L --seed 0 --condition-type canny
+python autoregressive/sample/sample_c2i.py --vq-ckpt checkpoints/vq/vq_ds16_c2i.pt --gpt-ckpt checkpoints/t2i/canny/canny_MR.safetensors --gpt-model GPT-L --seed 0 --condition-type canny # error
+python autoregressive/sample/sample_c2i.py --vq-ckpt checkpoints/vq/vq_ds16_c2i.pt --gpt-ckpt checkpoints/c2i/c2i_L_256.pt --gpt-model GPT-L --seed 0 --condition-type depth
+python autoregressive/sample/sample_c2i.py --vq-ckpt checkpoints/vq/vq_ds16_c2i.pt --gpt-ckpt checkpoints/c2i/c2i_L_384.pt --gpt-model GPT-L --seed 0 --condition-type depth
+
+
+T2I
+# HED
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/hed/hed.safetensors --gpt-model GPT-XL --image-size 512 --condition-type hed --seed 0 --condition-path condition/example/t2i/multigen/eye.png
+# SEG
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/seg/seg_cocostuff.safetensors --gpt-model GPT-XL --image-size 512 --condition-type seg --seed 0 --condition-path condition/example/t2i/cocostuff/doll.png --prompt 'A stuffed animal wearing a mask and a leash, sitting on a pink blanket'
+
+
+
+# control strength SEG
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/depth_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type seg --seed 0 --condition-path condition/example/t2i/multigen/bird.jpg --prompt 'A bird made of blue crystal' --adapter-size base --control-strength 0.6
+# control strength Lineart、Canny、Hed
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/edge_base.safetensors --gpt-model GPT-XL --image-size 512 --condition-type lineart --seed 0 --condition-path condition/example/t2i/multigen/girl.jpg --prompt 'A girl with blue hair' --adapter-size base --control-strength 0.6
+
+# MR 这个其实也只能生成768分辨率的图片
+这个需要 ControlAR/condition/ckpts/dpt_large 和 ControlAR/condition/ckpts/dpt_hybrid-midas-501f0c75.pt
+python3 autoregressive/sample/sample_t2i_MR.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/depth/depth_MR.safetensors --gpt-model GPT-XL --image-size 768 --condition-type depth --condition-path condition/example/t2i/multi_resolution/bird.jpg --prompt 'colorful bird' --seed 0
+
+python3 autoregressive/sample/sample_t2i_MR.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/canny/canny_MR.safetensors --gpt-model GPT-XL --image-size 768 --condition-type canny --condition-path condition/example/t2i/multi_resolution/bird.jpg --prompt 'colorful bird' --seed 0
+
+
+## my
+# canny
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/canny/canny_MR.safetensors --gpt-model GPT-XL --image-size 768 --condition-type canny --seed 0 --condition-path condition/example/t2i/multigen/landscape.jpg
+# depth
+python autoregressive/sample/sample_t2i.py --vq-ckpt checkpoints/vq/vq_ds16_t2i.pt --gpt-ckpt checkpoints/t2i/depth/depth_MR.safetensors --gpt-model GPT-XL --image-size 768 --condition-type depth --seed 0 --condition-path condition/example/t2i/multigen/sofa.png
+
+choose from 256, 320, 384, 400, 448, 512, 576, 640, 704, 768)

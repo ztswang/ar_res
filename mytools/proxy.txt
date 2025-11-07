@@ -1,0 +1,73 @@
+🌐 网络诊断指令
+基础连接测试
+# 测试国内网站
+ping baidu.com
+curl -I https://baidu.com
+
+# 测试国际网站
+ping google.com
+curl -I https://google.com
+
+# 测试 Hugging Face
+curl -I https://huggingface.co
+curl -I https://hf-mirror.com
+
+代理连接测试
+# 测试代理是否工作
+curl -I --proxy http://127.0.0.1:7890 https://google.com
+
+# 检查代理服务状态
+netstat -tuln | grep 7890
+ps aux | grep -i clash
+
+🔧 代理设置指令
+临时设置（当前终端有效
+# 设置代理
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+
+# 取消代理
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY all_proxy
+
+# 检查当前设置
+env | grep -i proxy
+
+永久设置（所有新终端）
+# 添加到配置文件
+echo 'export http_proxy=http://127.0.0.1:7890' >> ~/.bashrc
+echo 'export https_proxy=http://127.0.0.1:7890' >> ~/.bashrc
+echo 'export HTTP_PROXY=http://127.0.0.1:7890' >> ~/.bashrc
+echo 'export HTTPS_PROXY=http://127.0.0.1:7890' >> ~/.bashrc
+
+# 立即生效
+source ~/.bashrc
+
+🎯 Hugging Face 相关
+使用国内镜像
+# 临时使用
+export HF_ENDPOINT=https://hf-mirror.com
+
+# 永久使用
+echo 'export HF_ENDPOINT=https://hf-mirror.com' >> ~/.bashrc
+source ~/.bashrc
+
+手动下载模型
+# 下载 MiDaS 模型
+cd /data/hww/hww-huawei/ControlAR/condition/ckpts/
+wget https://hf-mirror.com/lllyasviel/ControlNet/resolve/main/annotator/ckpts/dpt_hybrid-midas-501f0c75.pt
+
+网络不通时检查步骤
+# 1. 检查基础网络
+ping baidu.com
+
+# 2. 检查国际网络  
+curl -I https://google.com
+
+# 3. 检查代理
+curl -I --proxy http://127.0.0.1:7890 https://google.com
+
+# 4. 检查环境变量
+env | grep -i proxy
+echo $HF_ENDPOINT
